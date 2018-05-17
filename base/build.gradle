@@ -1,0 +1,85 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.compile_version
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdk_version
+        targetSdkVersion rootProject.ext.target_version
+        versionCode 1
+        versionName "1.0"
+        dataBinding {
+            enabled = true
+        }
+        //testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "API_HOST", "\"http://www.baidu.com/debug/\"")
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "API_HOST", "\"http://www.baidu.com/release/\"")
+        }
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+configurations.all {
+    resolutionStrategy.eachDependency { details ->
+        if (details.requested.group == 'com.android.support'
+                && !details.requested.name.contains('multidex')) {
+            details.useVersion "${rootProject.ext.support_version}"
+        }
+    }
+}
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //support
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.support_version}"
+    api "com.android.support:recyclerview-v7:${rootProject.ext.support_version}"
+    implementation "com.android.support:design:${rootProject.ext.support_version}"
+    implementation "com.android.support:support-v4:${rootProject.ext.support_version}"
+    //android arch
+    kapt "android.arch.lifecycle:compiler:1.0.0"
+    api 'android.arch.lifecycle:runtime:1.0.3'
+    //rxjava
+    api 'io.reactivex.rxjava2:rxjava:2.1.5'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    //dagger
+    api "com.google.dagger:dagger:${rootProject.ext.dagger_version}"
+    kapt "com.google.dagger:dagger-compiler:${rootProject.ext.dagger_version}"
+    //retrofit, json parse
+    api 'com.squareup.retrofit2:retrofit:2.3.0'
+    api 'com.squareup.retrofit2:converter-moshi:2.3.0'
+    api 'com.squareup.moshi:moshi-kotlin:1.5.0'
+    api 'com.squareup.moshi:moshi:1.5.0'
+    api 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+    //glid
+    api 'com.github.bumptech.glide:glide:4.4.0'
+    kapt 'com.github.bumptech.glide:compiler:4.4.0'
+    //databinding
+    //kotlin
+    api "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
+kapt {
+    generateStubs = true
+}
+repositories {
+    mavenCentral()
+}

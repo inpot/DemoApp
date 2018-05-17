@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.daniel.tab.ThirdVM" />
+
+        <variable
+            name="vm"
+            type="ThirdVM" />
+
+    </data>
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.example.daniel.myapplication.ThirdActivity">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:layout_behavior="@string/bottom_sheet_behavior"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+            <android.support.design.widget.TabLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                app:adapter="@{vm.pagerAdapter}"
+                app:tabBackground="@drawable/bg_clickable_item_white"
+                app:tabIndicatorColor="@color/colorAccent"
+                app:tabIndicatorHeight="1.5dp"
+                app:tabSelectedTextColor="@color/colorAccent"
+                app:tabTextColor="@color/colorPrimary"
+                app:viewPager="@{@id/view_pager}" />
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:offscreenPageLimit="@{vm.pagerAdapter.count}" />
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

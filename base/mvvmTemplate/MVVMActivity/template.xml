@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<template
+        format="5"
+        revision="6"
+        name="MVVM Activity"
+        minApi="9"
+        minBuildApi="14"
+        description="Creates a new basic mvvm activity with an app bar.">
+
+    <category value="MVVM"/>
+    <formfactor value="Mobile"/>
+
+    <parameter
+            id="instantAppActivityHost"
+            name="Instant App URL Host"
+            type="string"
+            suggest="${companyDomain}"
+            default="instantapp.example.com"
+            visibility="isInstantApp!false"
+            help="The domain to use in the Instant App route for this activity"/>
+
+    <parameter
+            id="instantAppActivityRouteType"
+            name="Instant App URL Route Type"
+            type="enum"
+            default="pathPattern"
+            visibility="isInstantApp!false"
+            help="The type of route to use in the Instant App route for this activity" >
+            <option id="path">Path</option>
+            <option id="pathPrefix">Path Prefix</option>
+            <option id="pathPattern">Path Pattern</option>
+    </parameter>
+
+    <parameter
+            id="instantAppActivityRoute"
+            name="Instant App URL Route"
+            type="string"
+            default="/.*"
+            visibility="isInstantApp!false"
+            help="The route to use in the Instant App route for this activity"/>
+
+    <parameter
+        id="moduleName"
+        name="Page Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="Main"
+        help="The name of the module, will use for activity, layout,menu, start with upper case, to create"/>
+
+    <parameter
+            id="activityTitle"
+            name="Title"
+            type="string"
+            constraints="nonempty"
+            default="MainActivity"
+            suggest="${activityClass}"
+            help="The name of the activity. For launcher activities, the application title."/>
+
+    <parameter
+        id="viewType"
+        name="Activity View Type"
+        type="enum"
+        default="basic"
+        help="The type of activity" >
+        <option id="basic">Basic</option>
+        <option id="recyclerView">RecyclerView with refresh and load more</option>
+        <option id="topPager">ViewPager with TabLayout</option>
+    </parameter>
+
+    <parameter name="Home as up"
+        default="true"
+        help="If true, the page will have a back button"
+        id="isHomeAsUp"
+        type="boolean" />
+
+    <parameter name="Activity Name"
+        constraints="class|unique|nonempty"
+        default="MainActivity"
+        help="The name of the activity class to create"
+        id="activityClass"
+        suggest="${moduleName}Activity"
+        type="string" />
+
+    <parameter
+        id="layoutName"
+        name="Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        suggest="${activityToLayout(activityClass)}"
+        default="activity_main"
+        help="The name of the layout to create for the activity"/>
+
+    <parameter
+        id="hasAppBar"
+        name="Toolbar for activity"
+        type="boolean"
+        default="true"
+        help="If true, this activity will have a Toolbar"/>
+
+    <parameter
+            id="isLauncher"
+            name="Launcher Activity"
+            type="boolean"
+            default="false"
+            help="If true, this activity will have a CATEGORY_LAUNCHER intent filter, making it visible in the launcher"/>
+
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_basic_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl"/>
+    <execute file="recipe.xml.ftl"/>
+
+</template>
