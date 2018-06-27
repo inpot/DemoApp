@@ -56,3 +56,4 @@ freeline/
 freeline_project_description.json
 
 gradle*
+.DS_Store

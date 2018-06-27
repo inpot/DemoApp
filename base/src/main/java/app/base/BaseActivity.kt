@@ -1,5 +1,6 @@
 package app.base
 
+import android.content.Context
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Build
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.app.AppCompatDialog
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
+import android.view.inputmethod.InputMethodManager
 import android.widget.ProgressBar
 import app.base.di.IBuildComp
 import app.base.di.component.ActivityComp
@@ -98,6 +100,15 @@ abstract class BaseActivity : AppCompatActivity(), IBuildComp, IBaseView {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+    lateinit var  imm : InputMethodManager
+
+    override fun onPause() {
+        super.onPause()
+        if(!::imm.isInitialized){
+            imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        }
+        imm.hideSoftInputFromWindow(currentFocus.windowToken, InputMethodManager.RESULT_UNCHANGED_SHOWN)
     }
 
 }
