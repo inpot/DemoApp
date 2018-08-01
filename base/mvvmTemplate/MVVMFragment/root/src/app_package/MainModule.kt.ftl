@@ -14,7 +14,7 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Named
 import ${escapeKotlinIdentifiers(packageName)}.${moduleName?cap_first}VM
-import ${escapeKotlinIdentifiers(packageName)}.model.${moduleName?cap_first}P
+import ${escapeKotlinIdentifiers(packageName)}.model.${moduleName?cap_first}Rep
 
 <#if viewType=="recyclerView">
 @Module(includes = [LayoutManagerModules::class])
@@ -26,20 +26,20 @@ class ${moduleName?cap_first}Module(val view:${moduleName?cap_first}Contract.Vie
 <#if viewType=="recyclerView">
     @Provides
     @PerActivity
-    fun provideVM(presenterP: ${moduleName?cap_first}P, @Named(ListType.VERTICAL) layoutManager:RecyclerView.LayoutManager)
-            = ${moduleName?cap_first}VM(presenterP,view,layoutManager, ${moduleName?cap_first}ListAdapter())
+    fun provideVM(repository: ${moduleName?cap_first}Rep, @Named(ListType.VERTICAL) layoutManager:RecyclerView.LayoutManager)
+            = ${moduleName?cap_first}VM(repository,view,layoutManager, ${moduleName?cap_first}ListAdapter())
 
 <#elseif viewType=="topPager">
     @Provides
     @PerActivity
-    fun provideVM(presenterP: ${moduleName?cap_first}P,fragmentManager:FragmentManager)
-            = ${moduleName?cap_first}VM(presenterP,view, ${moduleName?cap_first}PagerAdapter(fragmentManager))
+    fun provideVM(repository: ${moduleName?cap_first}Rep,fragmentManager:FragmentManager)
+            = ${moduleName?cap_first}VM(repository,view, ${moduleName?cap_first}PagerAdapter(fragmentManager))
 
 <#else>
     @Provides
     @PerActivity
-    fun provideVM(presenterP: ${moduleName?cap_first}P)
-            = ${moduleName?cap_first}VM(presenterP,view)
+    fun provideVM(repository: ${moduleName?cap_first}Rep)
+            = ${moduleName?cap_first}VM(repository,view)
 
 </#if>
 }

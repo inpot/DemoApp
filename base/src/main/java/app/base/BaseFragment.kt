@@ -14,7 +14,7 @@ import app.base.di.IBuildComp
 import app.base.di.component.ActivityComp
 import app.base.di.component.DaggerFragmentComp
 import app.base.di.component.FragmentComp
-import app.base.mvvm.presenter.IPresenter
+import app.base.mvvm.repository.IRepository
 import app.base.mvvm.view.IView
 import app.base.mvvm.vm.BaseVM
 import app.base.widget.NoBgDialog
@@ -31,13 +31,13 @@ abstract class BaseFragment : Fragment(), IBuildComp, IBaseView {
         buildComp()
     }
 
-    protected fun <B : ViewDataBinding, P : IPresenter, V : IView> bindViewModel(
+    protected fun <B : ViewDataBinding, P : IRepository, V : IView> bindViewModel(
             layoutInflater: LayoutInflater,
             container: ViewGroup?,
             layoutResId: Int,
             viewModel: BaseVM<P, V>): B {
         val binding = DataBindingUtil.inflate<B>(layoutInflater, layoutResId, container, false)
-        viewModel.presenter.setLifecycleOwner(this)
+        viewModel.repository.setLifecycleOwner(this)
         binding.setVariable(BR.vm, viewModel)
         if (ViewDataBinding.getBuildSdkInt() < Build.VERSION_CODES.KITKAT) {
             binding.executePendingBindings()

@@ -18,6 +18,6 @@ class RecyclerModule(val view: RecyclerContract.View) {
 
     @Provides
     @PerActivity
-    fun provideVM(presenterP: RecyclerP, @Named(ListType.VERTICAL) layoutManager: RecyclerView.LayoutManager) = RecyclerVM(presenterP, view, layoutManager, RecyclerListAdapter())
+    fun provideVM(repository: RecyclerP, @Named(ListType.VERTICAL) layoutManager: RecyclerView.LayoutManager) = RecyclerVM(repository, view, layoutManager, RecyclerListAdapter())
 
 }

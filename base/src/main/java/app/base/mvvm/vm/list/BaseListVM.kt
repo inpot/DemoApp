@@ -3,8 +3,7 @@ package app.base.mvvm.vm.list
 import android.databinding.ObservableBoolean
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
-import android.view.View
-import app.base.mvvm.presenter.IPresenter
+import app.base.mvvm.repository.IRepository
 import app.base.mvvm.view.IView
 import app.base.mvvm.vm.BaseVM
 import app.base.widget.ILoadMore
@@ -12,10 +11,10 @@ import app.base.widget.ILoadMore
 /**
  * Created by daniel on 18-1-15.
  */
-abstract class BaseListVM<out P : IPresenter, out V : IView, D : Any>(presenter: P,
-                                                                      view: V,
-                                                                      val layoutManager: RecyclerView.LayoutManager,
-                                                                      val adapter: BaseListAdatper<D>) :ILoadMore, BaseVM<P, V>(presenter, view) {
+abstract class BaseListVM<out Rep : IRepository, out V : IView, D : Any>(repository: Rep,
+                                                                       view: V,
+                                                                       val layoutManager: RecyclerView.LayoutManager,
+                                                                       val adapter: BaseListAdatper<D>) :ILoadMore, BaseVM<Rep, V>(repository, view) {
     open var PAGE_SIZE = 25
     private var currentPage = 0
     var refreshing = ObservableBoolean(false)

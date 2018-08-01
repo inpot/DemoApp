@@ -16,6 +16,6 @@ class ForthModule(val view: ForthContract.View) {
 
     @Provides
     @PerActivity
-    fun provideVM(presenterP: ForthP, @Named(ListType.VERTICAL) layoutManager: RecyclerView.LayoutManager) = ForthVM(presenterP, view, layoutManager, ForthListAdapter())
+    fun provideVM(repository: ForthP, @Named(ListType.VERTICAL) layoutManager: RecyclerView.LayoutManager) = ForthVM(repository, view, layoutManager, ForthListAdapter())
 
 }

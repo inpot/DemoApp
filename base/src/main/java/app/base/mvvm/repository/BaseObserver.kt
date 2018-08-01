@@ -1,4 +1,4 @@
-package app.base.mvvm.presenter
+package app.base.mvvm.repository
 
 import app.base.IBaseView
 import io.reactivex.Observer

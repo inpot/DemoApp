@@ -3,16 +3,16 @@ package com.example.daniel.module
 import app.base.mvvm.vm.list.BaseListVM
 import app.base.mvvm.vm.list.BaseListAdatper
 import android.support.v7.widget.RecyclerView
-import app.base.mvvm.presenter.BaseObserver
+import app.base.mvvm.repository.BaseObserver
 import app.base.view.OnItemClick
 import com.example.daniel.module.di.ForthContract
 import com.example.daniel.tab.model.Book
 
-class ForthVM(presenter: ForthContract.Presenter,
+class ForthVM(repository: ForthContract.Repository,
               view: ForthContract.View,
               layoutManager: RecyclerView.LayoutManager,
               adapter: BaseListAdatper<Book>
-) : BaseListVM<ForthContract.Presenter, ForthContract.View, Book>(presenter, view, layoutManager, adapter), OnItemClick<Book> {
+) : BaseListVM<ForthContract.Repository, ForthContract.View, Book>(repository, view, layoutManager, adapter), OnItemClick<Book> {
 
 
     init {
@@ -20,7 +20,7 @@ class ForthVM(presenter: ForthContract.Presenter,
     }
 
     override fun onLoadData(page: Int) {
-        presenter.loadContent(page, object : BaseObserver<List<Book>>(view) {
+        repository.loadContent(page, object : BaseObserver<List<Book>>(view) {
             override fun onNext(t: List<Book>) {
                 bindResult(t)
             }

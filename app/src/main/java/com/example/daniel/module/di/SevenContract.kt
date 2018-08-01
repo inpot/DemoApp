@@ -1,18 +1,19 @@
-package com.example.daniel.tab.di
+package com.example.daniel.module.di
 
 import app.base.di.component.ActivityComp
 import app.base.di.scope.PerActivity
 import app.base.mvvm.repository.IRepository
 import app.base.mvvm.view.IView
-import com.example.daniel.tab.Tab1Fragment
+import com.example.daniel.module.SevenActivity
 import dagger.Component
 
-interface Tab1Contract {
+interface SevenContract {
+
     @PerActivity
-    @Component(modules = [Tab1Module::class],
+    @Component(modules = [SevenModule::class],
             dependencies = [ActivityComp::class])
     interface Comp : ActivityComp {
-        fun inject(fragment: Tab1Fragment)
+        fun inject(activity: SevenActivity)
     }
 
     interface View : IView

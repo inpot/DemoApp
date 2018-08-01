@@ -6,8 +6,8 @@
     <instantiate from="root/src/app_package/MainFragment.kt.ftl"
                    to="${escapeXmlAttribute(srcOut)}/${fragmentClass}.kt" />
 
-    <instantiate from="root/src/app_package/MainP.kt.ftl"
-                   to="${escapeXmlAttribute(srcOut)}/model/${moduleName?cap_first}P.kt" />
+    <instantiate from="root/src/app_package/MainRep.kt.ftl"
+                   to="${escapeXmlAttribute(srcOut)}/model/${moduleName?cap_first}Rep.kt" />
     <instantiate from="root/src/app_package/MainContract.kt.ftl"
                    to="${escapeXmlAttribute(srcOut)}/di/${moduleName?cap_first}Contract.kt" />
     <instantiate from="root/src/app_package/MainModule.kt.ftl"

@@ -1,4 +1,4 @@
-package app.base.mvvm.presenter
+package app.base.mvvm.repository
 
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleObserver
@@ -14,7 +14,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by daniel on 17-10-19.
  */
-abstract class BasePresenter : LifecycleObserver {
+abstract class BaseRepository : LifecycleObserver {
     private  val subject = PublishSubject.create<Lifecycle.Event>()
     lateinit var owner: Lifecycle
 

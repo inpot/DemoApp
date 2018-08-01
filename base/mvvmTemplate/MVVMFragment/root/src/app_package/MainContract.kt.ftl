@@ -2,7 +2,7 @@ package ${escapeKotlinIdentifiers(packageName)}.di
 
 import app.base.di.component.ActivityComp
 import app.base.di.scope.PerActivity
-import app.base.mvvm.presenter.IPresenter
+import app.base.mvvm.repository.IRepository
 import app.base.mvvm.view.IView
 import ${escapeKotlinIdentifiers(packageName)}.${fragmentClass}
 import dagger.Component
@@ -18,5 +18,5 @@ interface ${moduleName?cap_first}Contract {
 
     interface View : IView
 
-    interface Presenter : IPresenter
+    interface Repository : IRepository
 }

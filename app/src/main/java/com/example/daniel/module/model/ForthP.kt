@@ -1,14 +1,14 @@
 package com.example.daniel.module.model
 
-import app.base.mvvm.presenter.BaseObserver
-import app.base.mvvm.presenter.BasePresenter
+import app.base.mvvm.repository.BaseObserver
+import app.base.mvvm.repository.BaseRepository
 import com.example.daniel.module.di.ForthContract
 import com.example.daniel.tab.model.Book
 import io.reactivex.Observable
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class ForthP @Inject constructor() : BasePresenter(), ForthContract.Presenter {
+class ForthP @Inject constructor() : BaseRepository(), ForthContract.Repository {
 
     var page = 0
     override fun loadContent(page: Int, observer: BaseObserver<List<Book>>) {

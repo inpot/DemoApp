@@ -2,7 +2,7 @@ package com.example.daniel.module.di
 
 import app.base.di.component.ActivityComp
 import app.base.di.scope.PerActivity
-import app.base.mvvm.presenter.IPresenter
+import app.base.mvvm.repository.IRepository
 import app.base.mvvm.view.IView
 import com.example.daniel.module.RecyclerActivity
 import dagger.Component
@@ -18,7 +18,7 @@ interface RecyclerContract {
 
     interface View : IView
 
-    interface Presenter : IPresenter{
+    interface Repository : IRepository{
         fun loadData(page: Int, observer: Observer<List<String>>)
     }
 }

@@ -15,11 +15,11 @@ import app.base.mvvm.vm.BaseVM
 import ${escapeKotlinIdentifiers(packageName)}.di.${moduleName?cap_first}Contract
 
 <#if viewType=="recyclerView">
-class ${moduleName?cap_first}VM(presenter: ${moduleName?cap_first}Contract.Presenter,
+class ${moduleName?cap_first}VM(repository: ${moduleName?cap_first}Contract.Repository,
              view: ${moduleName?cap_first}Contract.View,
              layoutManager: RecyclerView.LayoutManager,
              adapter: BaseListAdatper<T>
-) :BaseListVM<${moduleName?cap_first}Contract.Presenter, ${moduleName?cap_first}Contract.View, T>(presenter, view, layoutManager, adapter),OnItemClick<T>{
+) :BaseListVM<${moduleName?cap_first}Contract.Repository, ${moduleName?cap_first}Contract.View, T>(repository, view, layoutManager, adapter),OnItemClick<T>{
 
     init {
        adapter.onItemClick = this
@@ -36,13 +36,13 @@ class ${moduleName?cap_first}VM(presenter: ${moduleName?cap_first}Contract.Prese
 }
 
 <#elseif viewType=="topPager">
-class ${moduleName?cap_first}VM(presenter: ${moduleName?cap_first}Contract.Presenter,
+class ${moduleName?cap_first}VM(repository: ${moduleName?cap_first}Contract.Repository,
              view: ${moduleName?cap_first}Contract.View,
              val pagerAdapter: FragmentStatePagerAdapter
-) :BaseVM<${moduleName?cap_first}Contract.Presenter, ${moduleName?cap_first}Contract.View >(presenter, view)
+) :BaseVM<${moduleName?cap_first}Contract.Repository, ${moduleName?cap_first}Contract.View >(repository, view)
 
 <#else>
-class ${moduleName?cap_first}VM(presenter: ${moduleName?cap_first}Contract.Presenter,
+class ${moduleName?cap_first}VM(repository: ${moduleName?cap_first}Contract.Repository,
              view: ${moduleName?cap_first}Contract.View
-) :BaseVM<${moduleName?cap_first}Contract.Presenter, ${moduleName?cap_first}Contract.View >(presenter, view)
+) :BaseVM<${moduleName?cap_first}Contract.Repository, ${moduleName?cap_first}Contract.View >(repository, view)
 </#if>

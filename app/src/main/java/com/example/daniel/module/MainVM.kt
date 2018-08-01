@@ -5,9 +5,9 @@ import android.view.View
 import app.base.mvvm.vm.BaseVM
 import com.example.daniel.module.di.MainContract
 
-class MainVM(presenter: MainContract.Presenter,
+class MainVM(repository: MainContract.Repository,
              view: MainContract.View
-) : BaseVM<MainContract.Presenter, MainContract.View>(presenter, view){
+) : BaseVM<MainContract.Repository, MainContract.View>(repository, view){
 
     fun onBtnClick(view: View){
         val intent = Intent(view.context, RecyclerActivity::class.java)

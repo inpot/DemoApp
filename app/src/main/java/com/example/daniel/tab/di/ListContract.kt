@@ -2,7 +2,7 @@ package com.example.daniel.tab.di
 
 import app.base.di.component.ActivityComp
 import app.base.di.scope.PerActivity
-import app.base.mvvm.presenter.IPresenter
+import app.base.mvvm.repository.IRepository
 import app.base.mvvm.view.IView
 import com.example.daniel.tab.ListFragment
 import dagger.Component
@@ -17,5 +17,5 @@ interface ListContract {
 
     interface View : IView
 
-    interface Presenter : IPresenter
+    interface Repository : IRepository
 }

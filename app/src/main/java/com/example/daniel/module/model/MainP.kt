@@ -1,7 +1,7 @@
 package com.example.daniel.module.model
 
-import app.base.mvvm.presenter.BasePresenter
+import app.base.mvvm.repository.BaseRepository
 import javax.inject.Inject
 import com.example.daniel.module.di.MainContract
 
-class MainP @Inject constructor() : BasePresenter(), MainContract.Presenter
+class MainRep @Inject constructor() : BaseRepository(), MainContract.Repository

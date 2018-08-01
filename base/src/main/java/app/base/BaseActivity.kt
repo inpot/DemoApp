@@ -16,7 +16,7 @@ import app.base.di.IBuildComp
 import app.base.di.component.ActivityComp
 import app.base.di.component.DaggerActivityComp
 import app.base.di.modules.ActivityModule
-import app.base.mvvm.presenter.IPresenter
+import app.base.mvvm.repository.IRepository
 import app.base.mvvm.view.IView
 import app.base.mvvm.vm.BaseVM
 import app.base.widget.NoBgDialog
@@ -70,7 +70,7 @@ abstract class BaseActivity : AppCompatActivity(), IBuildComp, IBaseView {
      *
      * */
 
-    protected fun <B : ViewDataBinding, P : IPresenter, V : IView> bindViewModel(layoutResId: Int, viewModel: BaseVM<P, V>, homeAsUp: Boolean): B {
+    protected fun <B : ViewDataBinding, P : IRepository, V : IView> bindViewModel(layoutResId: Int, viewModel: BaseVM<P, V>, homeAsUp: Boolean): B {
         val binding = DataBindingUtil.setContentView<B>(this, layoutResId)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         toolbar?.apply {
@@ -78,7 +78,7 @@ abstract class BaseActivity : AppCompatActivity(), IBuildComp, IBaseView {
             setSupportActionBar(this)
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(homeAsUp)
-        viewModel.presenter.setLifecycleOwner(this)
+        viewModel.repository.setLifecycleOwner(this)
         binding.setVariable(BR.vm, viewModel)
         if (ViewDataBinding.getBuildSdkInt() < Build.VERSION_CODES.KITKAT) {
             binding.executePendingBindings()
@@ -108,7 +108,7 @@ abstract class BaseActivity : AppCompatActivity(), IBuildComp, IBaseView {
         if(!::imm.isInitialized){
             imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         }
-        imm.hideSoftInputFromWindow(currentFocus.windowToken, InputMethodManager.RESULT_UNCHANGED_SHOWN)
+//        imm.hideSoftInputFromWindow(currentFocus.windowToken, InputMethodManager.RESULT_UNCHANGED_SHOWN)
     }
 
 }

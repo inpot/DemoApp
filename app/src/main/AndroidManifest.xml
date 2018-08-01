@@ -27,6 +27,10 @@
         <activity
             android:name="com.example.daniel.tab.ThirdActivity"
             android:label="@string/title_third"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.daniel.module.SevenActivity"
+            android:label="@string/title_seven"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -1,6 +1,6 @@
 package com.example.daniel.module.model
 
-import app.base.mvvm.presenter.BasePresenter
+import app.base.mvvm.repository.BaseRepository
 import javax.inject.Inject
 import com.example.daniel.module.di.RecyclerContract
 import com.example.daniel.myapplication.common.apiservices.LoginSample
@@ -9,7 +9,7 @@ import io.reactivex.Observable
 import io.reactivex.Observer
 import java.util.concurrent.TimeUnit
 
-class RecyclerP @Inject constructor(val loginApi: LoginSample, val db: SampledDB) : BasePresenter(), RecyclerContract.Presenter {
+class RecyclerP @Inject constructor(val loginApi: LoginSample, val db: SampledDB) : BaseRepository(), RecyclerContract.Repository {
 
         var page = 0
     override fun loadData(page: Int, observer: Observer<List<String>>) {
