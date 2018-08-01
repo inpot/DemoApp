@@ -1,16 +1,20 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 ext{
-    kotlin_version = '1.2.30'
-    android_arch_version = '1.0.3'
-    android_room_version = '1.0.0'
-    support_version = '27.0.2'
-    dagger_version = '2.14.1'
+    kotlin_version = '1.2.51'
+    lifecycle_version = "1.1.1"
+    android_room_version = '1.1.1'
+    support_version = '27.1.1'
+    dagger_version = '2.16'
+    retrofit2_version = '2.4.0'
+    rxjava2_version = '2.2.0'
+    moshi_version = '1.6.0'
+    glide_version = '4.7.1'
     target_version = 21
     compile_version = 27
     minSdk_version = 15
 }
 buildscript {
-    ext.kotlin_version = '1.2.30'
+    ext.kotlin_version = '1.2.51'
     repositories {
         google()
         jcenter()

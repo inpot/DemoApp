@@ -52,26 +52,30 @@ dependencies {
     implementation "com.android.support:design:${rootProject.ext.support_version}"
     implementation "com.android.support:support-v4:${rootProject.ext.support_version}"
     //android arch
-    kapt "android.arch.lifecycle:compiler:1.0.0"
-    api 'android.arch.lifecycle:runtime:1.0.3'
+    // use kapt for Kotlin
+    kapt "android.arch.lifecycle:compiler:${rootProject.ext.lifecycle_version}"
+    // ViewModel and LiveData
+    api "android.arch.lifecycle:extensions:$lifecycle_version"
+    //     Support library depends on this lightweight import
+    api "android.arch.lifecycle:runtime:${rootProject.ext.lifecycle_version}"
     //rxjava
-    api 'io.reactivex.rxjava2:rxjava:2.1.5'
-    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    api "io.reactivex.rxjava2:rxjava:${rootProject.ext.rxjava2_version}"
+    api 'io.reactivex.rxjava2:rxandroid:2.0.2'
     //dagger
     api "com.google.dagger:dagger:${rootProject.ext.dagger_version}"
     kapt "com.google.dagger:dagger-compiler:${rootProject.ext.dagger_version}"
     //retrofit, json parse
-    api 'com.squareup.retrofit2:retrofit:2.3.0'
-    api 'com.squareup.retrofit2:converter-moshi:2.3.0'
-    api 'com.squareup.moshi:moshi-kotlin:1.5.0'
-    api 'com.squareup.moshi:moshi:1.5.0'
-    api 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+    api "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofit2_version}"
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    api "com.squareup.retrofit2:converter-moshi:${rootProject.ext.retrofit2_version}"
+    api "com.squareup.moshi:moshi-kotlin:${rootProject.ext.moshi_version}"
+    api "com.squareup.moshi:moshi:${rootProject.ext.moshi_version}"
     //glid
-    api 'com.github.bumptech.glide:glide:4.4.0'
-    kapt 'com.github.bumptech.glide:compiler:4.4.0'
+    api "com.github.bumptech.glide:glide:${rootProject.ext.glide_version}"
+    kapt "com.github.bumptech.glide:compiler:${rootProject.ext.glide_version}"
     //databinding
     //kotlin
-    api "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

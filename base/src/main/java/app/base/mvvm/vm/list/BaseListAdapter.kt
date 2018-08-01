@@ -89,7 +89,7 @@ abstract class BaseListAdatper<D : Any> : RecyclerView.Adapter<RecyclerView.View
     abstract fun onCreateVM(position: Int, data: D): Any
 
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val viewType = getItemViewType(position)
         if (holder is BaseViewHolder ) {
             when(viewType){
@@ -104,7 +104,7 @@ abstract class BaseListAdatper<D : Any> : RecyclerView.Adapter<RecyclerView.View
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent?.context!!)
         return when (viewType) {
             TYPE_CONTENT -> BaseViewHolder(onCreateItemBinding(layoutInflater, parent))
