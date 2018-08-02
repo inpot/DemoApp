@@ -1,6 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 ext{
-    kotlin_version = '1.2.51'
     lifecycle_version = "1.1.1"
     android_room_version = '1.1.1'
     support_version = '27.1.1'
@@ -14,7 +13,7 @@ ext{
     minSdk_version = 15
 }
 buildscript {
-    ext.kotlin_version = '1.2.51'
+    //ext.kotlin_version = '1.2.51'
     repositories {
         google()
         jcenter()
