@@ -13,7 +13,7 @@ import app.base.widget.ILoadMore
 /**
  * Created by daniel on 18-1-15.
  */
-abstract class BaseListAdatper<D : Any> : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+abstract class BaseListAdapter<D : Any> : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var onItemClick: OnItemClick<D>? = null
     var loadMore: ILoadMore? = null
     private lateinit var footerBinding: ViewDataBinding

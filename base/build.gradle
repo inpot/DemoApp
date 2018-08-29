@@ -80,6 +80,13 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    def paging_version = "1.0.0"
+
+    api "android.arch.paging:runtime:$paging_version"
+
+    // optional - RxJava support, currently in release candidate
+    api "android.arch.paging:rxjava2:1.0.0-rc1"
 }
 kapt {
     generateStubs = true

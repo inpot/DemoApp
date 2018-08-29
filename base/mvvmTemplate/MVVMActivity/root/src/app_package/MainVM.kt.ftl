@@ -6,7 +6,7 @@ import android.view.View
 import app.base.mvvm.vm.list.BaseListVM
 import android.support.v7.widget.RecyclerView
 import app.base.view.OnItemClick
-import app.base.mvvm.vm.list.BaseListAdatper
+import app.base.mvvm.vm.list.BaseListAdapter
 <#elseif viewType=="topPager">
 import android.support.v4.app.FragmentStatePagerAdapter
 import app.base.mvvm.vm.BaseVM
@@ -19,7 +19,7 @@ import ${escapeKotlinIdentifiers(packageName)}.di.${moduleName?cap_first}Contrac
 class ${moduleName?cap_first}VM(repository: ${moduleName?cap_first}Contract.Repository,
              view: ${moduleName?cap_first}Contract.View,
              layoutManager: RecyclerView.LayoutManager,
-             adapter: BaseListAdatper<T>
+             adapter: BaseListAdapter<T>
 ) :BaseListVM<${moduleName?cap_first}Contract.Repository, ${moduleName?cap_first}Contract.View, T>(repository, view, layoutManager, adapter),OnItemClick<T>{
 
     init {

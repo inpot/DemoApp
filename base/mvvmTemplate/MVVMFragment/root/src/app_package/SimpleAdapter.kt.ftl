@@ -4,11 +4,11 @@ import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.support.v7.util.DiffUtil
 import android.view.LayoutInflater
-import app.base.mvvm.vm.list.BaseListAdatper
+import app.base.mvvm.vm.list.BaseListAdapter
 import android.view.ViewGroup
 import ${applicationPackage}.R
 
-class ${moduleName?cap_first}ListAdapter : BaseListAdatper<T>() {
+class ${moduleName?cap_first}ListAdapter : BaseListAdapter<T>() {
 
     override fun onCreateItemBinding(layoutInflater: LayoutInflater, parent: ViewGroup?): ViewDataBinding
             = DataBindingUtil.inflate(layoutInflater, R.layout.list_item_${moduleName?lower_case}, parent, false)
@@ -34,7 +34,7 @@ class ${moduleName?cap_first}ListAdapter : BaseListAdatper<T>() {
         lists = listSet
     }
 
-    class DiffCallBack(oldList: MutableList<T>, newList: MutableList<T>) : BaseListAdatper.BaseDiffCallback<T>(oldList, newList) {
+    class DiffCallBack(oldList: MutableList<T>, newList: MutableList<T>) : BaseListAdapter.BaseDiffCallback<T>(oldList, newList) {
 
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
             val oldItem = oldList[oldItemPosition]

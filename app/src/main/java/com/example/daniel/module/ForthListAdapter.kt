@@ -5,12 +5,12 @@ import android.databinding.ViewDataBinding
 import android.support.v7.util.DiffUtil
 import android.text.TextUtils
 import android.view.LayoutInflater
-import app.base.mvvm.vm.list.BaseListAdatper
+import app.base.mvvm.vm.list.BaseListAdapter
 import android.view.ViewGroup
 import com.example.daniel.myapplication.R
 import com.example.daniel.tab.model.Book
 
-class ForthListAdapter : BaseListAdatper<Book>() {
+class ForthListAdapter : BaseListAdapter<Book>() {
 
     override fun onCreateItemBinding(layoutInflater: LayoutInflater, parent: ViewGroup?): ViewDataBinding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item_forth, parent, false)
 
@@ -35,7 +35,7 @@ class ForthListAdapter : BaseListAdatper<Book>() {
         lists = listSet
     }
 
-    class DiffCallBack(oldList: MutableList<Book>, newList: MutableList<Book>) : BaseListAdatper.BaseDiffCallback<Book>(oldList, newList) {
+    class DiffCallBack(oldList: MutableList<Book>, newList: MutableList<Book>) : BaseListAdapter.BaseDiffCallback<Book>(oldList, newList) {
 
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
             val oldItem = oldList[oldItemPosition]

@@ -14,7 +14,7 @@ import app.base.widget.ILoadMore
 abstract class BaseListVM<out Rep : IRepository, out V : IView, D : Any>(repository: Rep,
                                                                        view: V,
                                                                        val layoutManager: RecyclerView.LayoutManager,
-                                                                       val adapter: BaseListAdatper<D>) :ILoadMore, BaseVM<Rep, V>(repository, view) {
+                                                                       val adapter: BaseListAdapter<D>) :ILoadMore, BaseVM<Rep, V>(repository, view) {
     open var PAGE_SIZE = 25
     private var currentPage = 0
     var refreshing = ObservableBoolean(false)
@@ -52,9 +52,9 @@ abstract class BaseListVM<out Rep : IRepository, out V : IView, D : Any>(reposit
         refreshing.set(false)
         val size = result?.size ?: 0
         if (size < PAGE_SIZE) {
-            adapter.footerType = BaseListAdatper.TYPE_FOOTER_NO_MORE
+            adapter.footerType = BaseListAdapter.TYPE_FOOTER_NO_MORE
         }else{
-            adapter.footerType = BaseListAdatper.TYPE_FOOTER_LOADING
+            adapter.footerType = BaseListAdapter.TYPE_FOOTER_LOADING
         }
 
         if(result != null && size > 0){
@@ -73,7 +73,7 @@ abstract class BaseListVM<out Rep : IRepository, out V : IView, D : Any>(reposit
         loading = false
         refreshing.set(false)
         if(currentPage>0){
-            adapter.footerType = BaseListAdatper.TYPE_FOOTER_ERROR
+            adapter.footerType = BaseListAdapter.TYPE_FOOTER_ERROR
         }
     }
 

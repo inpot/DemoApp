@@ -6,10 +6,10 @@ import android.support.v7.util.DiffUtil
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import app.base.mvvm.vm.list.BaseListAdatper
+import app.base.mvvm.vm.list.BaseListAdapter
 import com.example.daniel.myapplication.R
 
-class RecyclerListAdapter : BaseListAdatper<String>() {
+class RecyclerListAdapter : BaseListAdapter<String>() {
 
     override fun onCreateItemBinding(layoutInflater: LayoutInflater, parent: ViewGroup?): ViewDataBinding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item_recycler, parent, false)
 
@@ -28,7 +28,7 @@ class RecyclerListAdapter : BaseListAdatper<String>() {
         lists = listSet
     }
 
-    class DiffCallBack(oldList: MutableList<String>, newList: MutableList<String>) : BaseListAdatper.BaseDiffCallback<String>(oldList, newList) {
+    class DiffCallBack(oldList: MutableList<String>, newList: MutableList<String>) : BaseListAdapter.BaseDiffCallback<String>(oldList, newList) {
 
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
             val oldItem = oldList[oldItemPosition]

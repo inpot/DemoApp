@@ -1,7 +1,7 @@
 package com.example.daniel.module
 
 import app.base.mvvm.vm.list.BaseListVM
-import app.base.mvvm.vm.list.BaseListAdatper
+import app.base.mvvm.vm.list.BaseListAdapter
 import android.support.v7.widget.RecyclerView
 import app.base.mvvm.repository.BaseObserver
 import app.base.view.OnItemClick
@@ -11,7 +11,7 @@ import com.example.daniel.tab.model.Book
 class ForthVM(repository: ForthContract.Repository,
               view: ForthContract.View,
               layoutManager: RecyclerView.LayoutManager,
-              adapter: BaseListAdatper<Book>
+              adapter: BaseListAdapter<Book>
 ) : BaseListVM<ForthContract.Repository, ForthContract.View, Book>(repository, view, layoutManager, adapter), OnItemClick<Book> {
 
 
