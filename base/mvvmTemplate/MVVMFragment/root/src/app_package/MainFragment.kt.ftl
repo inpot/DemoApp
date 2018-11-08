@@ -24,6 +24,7 @@ class ${fragmentClass}: BaseFragment(),${moduleName?cap_first}Contract.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding: Fragment${moduleName?cap_first}Binding = bindViewModel(inflater,container,R.layout.${layoutName}, vm)
+        binding.setLifecycleOwner(this)
         return binding.root
     }
 

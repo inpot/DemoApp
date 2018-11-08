@@ -50,4 +50,5 @@ class ${moduleName?cap_first}ListAdapter : BaseListAdapter<T>() {
 
 
     }
+
 }

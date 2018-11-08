@@ -1,5 +1,7 @@
 package com.example.daniel.module
 
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import app.base.BaseActivity
 import com.example.daniel.module.di.DaggerMainContract_Comp
@@ -21,7 +23,10 @@ class MainActivity : BaseActivity(), MainContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        vm.name.postValue("00000000")
+        vm.name2.set("nam-----")
         val binding: ActivityMainBinding = bindViewModel(R.layout.activity_main, vm, false)
+        binding.setLifecycleOwner(this)
     }
 
 }
