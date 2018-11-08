@@ -1,6 +1,6 @@
 package com.example.daniel.module.di
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import app.base.di.modules.LayoutManagerModules
 import app.base.di.scope.ListType
 import com.example.daniel.module.ForthListAdapter

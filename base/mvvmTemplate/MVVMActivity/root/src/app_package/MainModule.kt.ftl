@@ -1,19 +1,19 @@
 package ${escapeKotlinIdentifiers(packageName)}.di
 
 <#if viewType=="recyclerView">
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import app.base.di.modules.LayoutManagerModules
 import app.base.di.scope.ListType
 import ${escapeKotlinIdentifiers(packageName)}.${moduleName?cap_first}ListAdapter
 <#elseif viewType=="topPager">
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.FragmentManager
 import ${escapeKotlinIdentifiers(packageName)}.${moduleName?cap_first}PagerAdapter
 </#if>
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModelProviders
 import app.base.di.scope.PerActivity
-import android.arch.lifecycle.ViewModelProviders
 import dagger.Module
 import dagger.Provides
 import ${escapeKotlinIdentifiers(packageName)}.${moduleName?cap_first}VM

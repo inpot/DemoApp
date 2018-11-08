@@ -1,6 +1,6 @@
 package com.example.daniel.myapplication.common.db
 
-import android.arch.persistence.room.*
+import androidx.room.*
 
 /**
  * Created by daniel on 17-10-19.

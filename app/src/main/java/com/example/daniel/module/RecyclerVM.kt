@@ -2,7 +2,7 @@ package com.example.daniel.module
 
 import android.content.Intent
 import app.base.mvvm.vm.list.BaseListVM
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import app.base.mvvm.repository.BaseObserver
 import app.base.mvvm.vm.list.BaseListAdapter

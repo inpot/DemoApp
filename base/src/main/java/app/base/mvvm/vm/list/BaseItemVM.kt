@@ -1,6 +1,6 @@
 package app.base.mvvm.vm.list
 
-import android.databinding.BaseObservable
+import androidx.databinding.BaseObservable
 import android.view.View
 import app.base.view.OnItemClick
 

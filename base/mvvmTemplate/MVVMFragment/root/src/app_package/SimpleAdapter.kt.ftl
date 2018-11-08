@@ -2,7 +2,7 @@ package ${escapeKotlinIdentifiers(packageName)}
 
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
-import android.support.v7.util.DiffUtil
+import androidx.recyclerview.widget.DiffUtil
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import app.base.mvvm.vm.list.BaseListAdapter

@@ -1,6 +1,6 @@
 package app.base
 
-import android.support.v7.app.AppCompatDialog
+import androidx.appcompat.app.AppCompatDialog
 
 /**
  * Created by daniel on 18-1-31.

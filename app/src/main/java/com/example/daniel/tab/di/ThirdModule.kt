@@ -1,6 +1,6 @@
 package com.example.daniel.tab.di
 
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.FragmentManager
 import com.example.daniel.tab.ThirdPagerAdapter
 import app.base.di.scope.PerActivity
 import dagger.Module

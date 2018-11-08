@@ -2,7 +2,7 @@ package app.base.widget
 
 import android.app.Dialog
 import android.content.Context
-import android.support.v7.app.AppCompatDialog
+import androidx.appcompat.app.AppCompatDialog
 import app.base.R
 
 /**

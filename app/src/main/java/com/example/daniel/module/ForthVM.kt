@@ -1,8 +1,9 @@
 package com.example.daniel.module
 
+import androidx.recyclerview.widget.DiffUtil
 import app.base.mvvm.vm.list.BaseListVM
 import app.base.mvvm.vm.list.BaseListAdapter
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import app.base.mvvm.repository.BaseObserver
 import app.base.view.OnItemClick
 import com.example.daniel.module.di.ForthContract

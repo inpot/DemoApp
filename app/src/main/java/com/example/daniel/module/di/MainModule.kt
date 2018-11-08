@@ -1,8 +1,8 @@
 package com.example.daniel.module.di
 
-import android.arch.lifecycle.ViewModelProviders
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
+import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import app.base.di.scope.PerActivity
 import dagger.Module
 import dagger.Provides

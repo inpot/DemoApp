@@ -1,7 +1,7 @@
 package com.example.daniel.myapplication.common.db
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
+import androidx.room.Database
+import androidx.room.RoomDatabase
 
 /**
  * Created by daniel on 17-10-19.

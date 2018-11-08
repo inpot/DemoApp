@@ -1,14 +1,14 @@
 package app.base
 
 import android.content.Context
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.CallSuper
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.app.AppCompatDialog
-import android.support.v7.widget.Toolbar
+import androidx.annotation.CallSuper
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDialog
+import androidx.appcompat.widget.Toolbar
 import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
 import android.widget.ProgressBar

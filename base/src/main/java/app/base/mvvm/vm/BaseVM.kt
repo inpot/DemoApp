@@ -1,6 +1,6 @@
 package app.base.mvvm.vm
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import app.base.mvvm.repository.IRepository
 import app.base.mvvm.view.IView
 

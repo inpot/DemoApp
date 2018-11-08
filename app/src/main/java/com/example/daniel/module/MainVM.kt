@@ -1,8 +1,8 @@
 package com.example.daniel.module
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import android.content.Intent
-import android.databinding.ObservableField
+import androidx.databinding.ObservableField
 import android.view.View
 import app.base.mvvm.vm.BaseVM
 import com.example.daniel.module.di.MainContract

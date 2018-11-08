@@ -1,7 +1,7 @@
 package com.example.daniel.module
 
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import app.base.BaseActivity
 import com.example.daniel.module.di.DaggerMainContract_Comp

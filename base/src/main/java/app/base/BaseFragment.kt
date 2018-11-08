@@ -1,12 +1,12 @@
 package app.base
 
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.CallSuper
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatDialog
+import androidx.annotation.CallSuper
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ProgressBar

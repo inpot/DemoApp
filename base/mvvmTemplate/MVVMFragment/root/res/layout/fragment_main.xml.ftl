@@ -13,13 +13,13 @@
 
     </data>
 
-       <android.support.constraint.ConstraintLayout
+       <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 <#if viewType=="recyclerView">
-        <android.support.v4.widget.SwipeRefreshLayout
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/refreshLayout"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_width="match_parent"
@@ -29,14 +29,14 @@
             app:refreshListener="@{vm.refreshingListener}"
             app:refreshing="@={vm.refreshing}">
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:adapter="@{vm.adapter}"
                 app:layoutManager="@{vm.layoutManager}" />
-        </android.support.v4.widget.SwipeRefreshLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 <#elseif viewType=="topPager">
-        <android.support.design.widget.TabLayout
+        <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -49,8 +49,8 @@
             app:tabIndicatorHeight="1.5dp"
             app:tabTextColor="?android:attr/textColorPrimary"
             app:viewPager="@{@id/view_pager}" />
-        </android.support.design.widget.AppBarLayout>
-        <android.support.v4.view.ViewPager
+        </com.google.android.material.appbar.AppBarLayout>
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             app:layout_constraintTop_toBottomOf="@id/tabLayout"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -71,5 +71,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 </#if>
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

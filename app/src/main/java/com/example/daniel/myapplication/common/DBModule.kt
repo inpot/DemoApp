@@ -1,6 +1,6 @@
 package com.example.daniel.myapplication.common
 
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import android.content.Context
 import app.base.di.scope.PerActivity
 import com.example.daniel.myapplication.common.db.DBConfig

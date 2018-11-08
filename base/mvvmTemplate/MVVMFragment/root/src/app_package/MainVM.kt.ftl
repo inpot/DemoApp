@@ -2,11 +2,11 @@ package ${escapeKotlinIdentifiers(packageName)}
 
 <#if viewType=="recyclerView">
 import app.base.mvvm.vm.list.BaseListVM
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import app.base.view.OnItemClick
 import app.base.mvvm.vm.list.BaseListAdapter
 <#elseif viewType=="topPager">
-import android.support.v4.app.FragmentStatePagerAdapter
+import androidx.fragment.app.FragmentStatePagerAdapter
 import app.base.mvvm.vm.BaseVM
 <#else>
 import app.base.mvvm.vm.BaseVM

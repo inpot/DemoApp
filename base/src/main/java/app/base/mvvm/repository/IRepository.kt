@@ -1,7 +1,7 @@
 package app.base.mvvm.repository
 
-import android.arch.lifecycle.LifecycleObserver
-import android.arch.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 
 /**
  * Created by daniel on 17-10-19.

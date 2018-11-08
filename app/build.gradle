@@ -14,7 +14,7 @@ android {
         applicationId "com.example.daniel.myapplication"
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
@@ -35,20 +35,15 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:appcompat-v7:${rootProject.ext.support_version}"
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation "com.android.support:design:${rootProject.ext.support_version}"
     kapt "com.google.dagger:dagger-compiler:${rootProject.ext.dagger_version}"
     implementation project(':base')
     // room
-    implementation "android.arch.persistence.room:runtime:${rootProject.ext.android_room_version}"
-    kapt "android.arch.persistence.room:compiler:${rootProject.ext.android_room_version}"
-    implementation "android.arch.persistence.room:rxjava2:${rootProject.ext.android_room_version}"
+    kapt 'androidx.room:room-compiler:2.1.0-alpha02'
 
 
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
 }

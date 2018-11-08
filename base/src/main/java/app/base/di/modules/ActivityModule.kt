@@ -1,6 +1,6 @@
 package app.base.di.modules
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import app.base.di.scope.PerActivity
 import app.base.di.scope.PerBaseActivity
 import dagger.Module
