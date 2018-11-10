@@ -1,0 +1,4 @@
+[submodule "base"]
+	path = base
+	url = github:inpot/base.git
+	branch = master

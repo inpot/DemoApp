@@ -13,6 +13,7 @@ android {
         targetSdkVersion rootProject.ext.target_version
         applicationId "com.example.daniel.myapplication"
         versionCode 1
+        multiDexEnabled true
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
@@ -39,7 +40,6 @@ dependencies {
     implementation project(':base')
     // room
     kapt 'androidx.room:room-compiler:2.1.0-alpha02'
-
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0'
