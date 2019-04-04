@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Demo</string>
     <string name="api_host">http://www.github.com/</string>
+    <string name="title_main">MainActivity</string>
 </resources>
