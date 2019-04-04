@@ -10,28 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name="com.example.daniel.module.MainActivity"
-            android:label="@string/title_main"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.example.daniel.module.RecyclerActivity"
-            android:label="@string/title_recycler"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="com.example.daniel.tab.ThirdActivity"
-            android:label="@string/title_third"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="com.example.daniel.module.SevenActivity"
-            android:label="@string/title_seven"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
