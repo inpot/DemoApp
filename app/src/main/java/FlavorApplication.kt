@@ -8,4 +8,12 @@ import app.base.BaseApplication
 
 class FlavorApplication: BaseApplication(){
 
+    override fun onCreate() {
+        super.onCreate()
+        instance = this
+    }
+
+    companion object {
+        lateinit var instance:FlavorApplication
+    }
 }
