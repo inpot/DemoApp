@@ -23,7 +23,7 @@ class MainActivity : BaseActivity(), MainContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding: ActivityMainBinding = bindViewModel(R.layout.activity_main, vm, true)
+        val binding: ActivityMainBinding = bindViewModel(R.layout.activity_main, vm,false)
     }
 
     companion object {

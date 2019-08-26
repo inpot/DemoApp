@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <paths>
+        <!-- Context.getFilesDir() + "/path/" -->
+        <files-path
+                name="files"
+                path="files/"/>
+        <!-- Context.getCacheDir() + "/path/" -->
+        <cache-path
+                name="cache"
+                path="cache/"/>
+        <!-- Context.getExternalFilesDir(null) + "/path/" -->
+        <external-files-path
+                name="external-files-path"
+                path="externalFileDir/"/>
+        <!-- Context.getExternalCacheDir() + "/path/" -->
+        <external-cache-path
+                name="externalCachePath"
+                path="externalCachePath/" />
+        <!-- Environment.getExternalStorageDirectory() + "/path/" -->
+        <external-path
+                name="externalPath"
+                path="externalPath/"/>
+        <!-- path设置为'.'时代表整个存储卡 Environment.getExternalStorageDirectory() + "/path/"   -->
+        <external-path
+                name="externalStorageRoot"
+                path="."/>
+    </paths>
+</resources>
+

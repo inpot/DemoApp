@@ -27,6 +27,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug{
+            splits.abi.enable = false
+            splits.density.enable = false
+            aaptOptions.cruncherEnabled = false
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -39,7 +44,7 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:${rootProject.ext.dagger_version}"
     implementation project(':base')
     // room
-    kapt 'androidx.room:room-compiler:2.1.0-alpha02'
+    kapt "androidx.room:room-compiler:${rootProject.ext.androidx_room}"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0'
