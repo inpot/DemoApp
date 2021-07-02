@@ -7,7 +7,7 @@ ext{
     minSdk_version = 21
 }
 buildscript {
-    ext.kotlin_version = '1.5.10'
+    ext.kotlin_version = '1.4.30'
     repositories {
         maven{url 'https://maven.aliyun.com/repository/public'}
         maven{url 'https://maven.aliyun.com/repository/google'}
