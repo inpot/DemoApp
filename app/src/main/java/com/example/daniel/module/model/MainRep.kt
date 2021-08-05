@@ -17,7 +17,7 @@ class MainRep @Inject constructor(@Named(PreferenceModule.PREFERENCES_USER) val 
 
     override suspend fun queryDns(name: String): QueryRes {
         return withContext(Dispatchers.IO){
-            val res =  loginApi.queryDns(name,1).await()
+            val res =  loginApi.queryDns(name,1)
             Log.i("test", res.toString())
             res
         }

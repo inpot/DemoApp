@@ -16,5 +16,5 @@ interface LoginSample {
 
 
     @GET("resolve")
-    fun queryDns(@Query("name") domain: String, @Query("type") type: Int):Deferred<QueryRes>
+    suspend fun queryDns(@Query("name") domain: String, @Query("type") type: Int):QueryRes
 }
