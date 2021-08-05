@@ -16,6 +16,10 @@ class MainVM() : BaseVM<MainContract.Repository, MainContract.View>() {
     fun TestClick(view: View){
 
         loadData()
+        viewModelScope.launch{
+            val res = repository.queryDns("pl.goinbowl.com")
+            Log.i("test",res.toString())
+        }
     }
 
     fun loadData(){

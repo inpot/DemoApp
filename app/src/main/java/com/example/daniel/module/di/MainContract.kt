@@ -5,6 +5,7 @@ import app.base.di.scope.PerActivity
 import app.base.mvvm.repository.IRepository
 import app.base.mvvm.view.IView
 import com.example.daniel.module.MainActivity
+import com.example.daniel.myapplication.com.example.daniel.module.model.QueryRes
 import dagger.Component
 
 interface MainContract {
@@ -18,5 +19,8 @@ interface MainContract {
 
     interface View : IView
 
-    interface Repository : IRepository
+    interface Repository : IRepository{
+
+        suspend fun queryDns(name:String) :QueryRes
+    }
 }
