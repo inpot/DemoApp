@@ -35,6 +35,8 @@ class MainVM() : BaseVM<MainContract.Repository, MainContract.View>() {
 
     }
 
+    val longTxt = "ANTLR Tool version 4.5.3 used for code generation does not match the current runtime version 4.7.1ANTLR Runtime version 4.5.3 used for parser compilation does not match the current runtime"
+
 
     suspend fun getData(): String{
         var res = withContext(Dispatchers.IO){

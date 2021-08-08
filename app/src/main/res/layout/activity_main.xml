@@ -61,6 +61,15 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+            <com.example.daniel.myapplication.common.MarqueeTextView
+                android:layout_width="match_parent"
+                android:singleLine="true"
+                app:layout_constraintTop_toBottomOf="@id/textView"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:ellipsize="none"
+                android:text="@{vm.longTxt}"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_height="wrap_content"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
