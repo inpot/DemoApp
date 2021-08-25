@@ -1,6 +1,8 @@
 package com.example.test
 
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
@@ -26,6 +28,8 @@ class MarqueeTextView @JvmOverloads constructor(
     private var mPreLoad: Boolean = false
     private var mLoading: Boolean = false
     private var mGravity: Int = 0
+    private val mHandler = Handler(Looper.getMainLooper())
+    private var mOffsetXInView = 0;
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
@@ -35,9 +39,9 @@ class MarqueeTextView @JvmOverloads constructor(
     }
 
     override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
         mAttached = false
         stopScroll()
+        super.onDetachedFromWindow()
     }
 
     fun startScroll() {
@@ -55,7 +59,7 @@ class MarqueeTextView @JvmOverloads constructor(
                 post{ doStartScroll() }
             }
         } else {
-            if (!mLoading) {
+            if (!mLoading) {// only start one time
                 mLoading = true
                 doStartScroll()
                 mLoading = false
@@ -65,14 +69,13 @@ class MarqueeTextView @JvmOverloads constructor(
 
     private fun doStartScroll() {
         mTxtWidth = (super.getPaint().measureText(mTxt.toString())).toInt()
-        val viewWidth: Int = width
-        Log.i(TAG, "txtWidth:$mTxtWidth viewWidth:$viewWidth")
-        if (mTxtWidth <= 0 || mTxtWidth <= viewWidth) {
+        val availableWidth: Int = width - paddingLeft - paddingRight
+        Log.i(TAG, "txtWidth:$mTxtWidth viewWidth:$availableWidth")
+        if (mTxtWidth <= 0 || mTxtWidth <= availableWidth) {
             return
         }
         mRunning = true
         gravity = Gravity.START or  mGravity
-        setScroller(mScroller)
         startAnimation()
     }
 
@@ -80,33 +83,33 @@ class MarqueeTextView @JvmOverloads constructor(
         if (!mRunning) {
             return
         }
-        postDelayed(object :Runnable{
+        mHandler.postDelayed(object :Runnable{
 
             override fun run() {
-            val currX: Int = mScroller.currX
-            val startX: Int = if ((currX > mTxtWidth)) -width else currX
-            if (!mRunning) {
-                return
-            }
-            mScroller.startScroll(
-                startX, 0, OFFSET, 0,
-                DURATION.toInt()
-            )
-            invalidate()
-            startAnimation()
+                val currX: Int = mScroller.currX
+                val startX: Int = if ((currX > mTxtWidth)) -width else currX
+                if (!mRunning) {
+                    return
+                }
+                mScroller.startScroll(startX, 0, OFFSET, 0, DURATION.toInt())
+                startAnimation()
             }
         }, DURATION)
     }
 
     fun stopScroll() {
         mRunning = false
+        mHandler.removeCallbacksAndMessages(null)
         mScroller.abortAnimation()
-        scrollTo(0, 0)
-        val curX: Int = mScroller.currX
-        mScroller.startScroll(curX, 0, -curX, 0, 1)
-        invalidate()
-        mScroller.abortAnimation()
-        mPreLoad = false
+    }
+
+    fun resetScroll(){
+        if(mScroller.currX != 0){
+            mScroller.startScroll(mScroller.currX,0, -mScroller.currX,0,0)
+        }
+        if(scrollX != mOffsetXInView){
+            scrollTo(mOffsetXInView,0)
+        }
     }
 
     override fun computeScroll() {
@@ -117,13 +120,28 @@ class MarqueeTextView @JvmOverloads constructor(
         }
     }
 
+    override fun onPreDraw(): Boolean {
+        val running = mRunning
+        if(running){
+            stopScroll()
+        }
+        val res = super.onPreDraw()
+        mOffsetXInView = scrollX
+        if(running){
+            resetScroll()
+            startScroll()
+        }
+        return res;
+    }
+
     companion object {
-        private const val DURATION: Long = 500L
-        private const val OFFSET: Int = 40
+        private const val DURATION: Long = 1000L
+        private const val OFFSET: Int = 80
     }
 
     init {
         mGravity = gravity
+        setScroller(mScroller)
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
@@ -134,12 +152,10 @@ class MarqueeTextView @JvmOverloads constructor(
                 if (mRunning) {
                     stopScroll()
                 }
-                gravity = mGravity
-                val currX0: Int = scrollX
-                val currX: Int = mScroller.currX
-                val startX: Int = mScroller.startX
-                val finalX: Int = mScroller.finalX
-                Log.i(TAG, "currX0: $currX0 currX:$currX startX:$startX finalX: $finalX")
+                if(gravity != mGravity){
+                    gravity = mGravity
+                }
+                resetScroll()
                 mTxt = s.toString()
                 if (mAttached) {
                     startScroll()
