@@ -25,7 +25,6 @@ class MarqueeTextView @JvmOverloads constructor(
     private var mTxtWidth: Int = 0
     private var mAttached: Boolean = false
     private var mTxt: CharSequence? = null
-    private var mPreLoad: Boolean = false
     private var mLoading: Boolean = false
     private var mGravity: Int = 0
     private val mHandler = Handler(Looper.getMainLooper())
@@ -44,6 +43,7 @@ class MarqueeTextView @JvmOverloads constructor(
     }
 
     override fun onDetachedFromWindow() {
+        Log.i(TAG, "onDetachedFromWindow")
         mAttached = false
         stopScroll()
         super.onDetachedFromWindow()
@@ -56,13 +56,7 @@ class MarqueeTextView @JvmOverloads constructor(
         if (TextUtils.isEmpty(mTxt)) {
             return
         }
-        if (width <= 0) {
-            if (!mPreLoad) {
-                Log.i(TAG, "preload:$mPreLoad")
-                mPreLoad = true
-                post{ doStartScroll() }
-            }
-        } else {
+        if (width > 0) {
             if (!mLoading) {// only start one time
                 mLoading = true
                 doStartScroll()
@@ -72,11 +66,10 @@ class MarqueeTextView @JvmOverloads constructor(
     }
 
     private fun doStartScroll() {
-        mTxtWidth = (super.getPaint().measureText(mTxt.toString())).toInt()
+        mTxtWidth = (paint.measureText(mTxt.toString())).toInt()
         val availableWidth: Int = width - paddingLeft - paddingRight
         Log.i(TAG, "doStartScroll txtWidth:$mTxtWidth viewWidth:$availableWidth")
         if (mTxtWidth <= 0 || mTxtWidth <= availableWidth || mRunning) {
-            mPreLoad = false
             return
         }
         mRunning = true
@@ -110,12 +103,12 @@ class MarqueeTextView @JvmOverloads constructor(
     }
 
     fun resetScroll(){
-        if(scrollX != mOffsetXInView){
-            scrollTo(mOffsetXInView,0)
-        }
         if(mScroller.currX != 0){
             mScroller.startScroll(mScroller.currX,0, -mScroller.currX,0,0)
             mScroller.abortAnimation()
+        }
+        if(scrollX != mOffsetXInView){
+            scrollTo(mOffsetXInView,0)
         }
         invalidate()
     }

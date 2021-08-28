@@ -44,11 +44,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Test Conroutine"
-                android:onClick="@{vm::TestClick}"
+                android:onClick="@{vm::CoroutineClick}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test MarqueeText"
+                android:onClick="@{vm::MarqueeTextClick}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv1" />
 
             <TextView
                 android:id="@+id/textView"
@@ -64,6 +72,7 @@
             <com.example.test.MarqueeTextView
                 android:layout_width="match_parent"
                 android:singleLine="true"
+                android:id="@+id/tv1"
                 android:background="#ff0000"
                 app:layout_constraintTop_toBottomOf="@id/textView"
                 app:layout_constraintLeft_toLeftOf="parent"

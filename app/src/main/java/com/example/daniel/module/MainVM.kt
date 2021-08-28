@@ -15,7 +15,14 @@ class MainVM() : BaseVM<MainContract.Repository, MainContract.View>() {
 
     var index =0;
 
-    fun TestClick(view: View){
+    fun CoroutineClick(view: View){
+//        loadData()
+        viewModelScope.launch{
+            val res = repository.queryDns("pl.goinbowl.com")
+            Log.i("test",res.toString())
+        }
+    }
+    fun MarqueeTextClick(view: View){
 
         marqueeTxt.value = when(index%4){
             0-> longTxt ;
@@ -25,11 +32,6 @@ class MainVM() : BaseVM<MainContract.Repository, MainContract.View>() {
             else -> longTxt2
         }
         index++
-//        loadData()
-//        viewModelScope.launch{
-//            val res = repository.queryDns("pl.goinbowl.com")
-//            Log.i("test",res.toString())
-//        }
     }
 
     fun loadData(){
