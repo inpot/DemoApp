@@ -55,6 +55,4 @@ freeline.py
 freeline/
 freeline_project_description.json
 
-gradlew
-gradle/
 .DS_Store
