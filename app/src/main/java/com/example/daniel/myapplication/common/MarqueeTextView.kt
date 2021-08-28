@@ -35,6 +35,11 @@ class MarqueeTextView @JvmOverloads constructor(
         super.onAttachedToWindow()
         Log.i(TAG, "onAttach width: $width")
         mAttached = true
+    }
+
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        Log.i(TAG, "onSizeChanged width:$width oldW:$oldw")
         startScroll()
     }
 
@@ -48,7 +53,6 @@ class MarqueeTextView @JvmOverloads constructor(
         if (mRunning) {
             return
         }
-        mTxt = text
         if (TextUtils.isEmpty(mTxt)) {
             return
         }
@@ -70,8 +74,9 @@ class MarqueeTextView @JvmOverloads constructor(
     private fun doStartScroll() {
         mTxtWidth = (super.getPaint().measureText(mTxt.toString())).toInt()
         val availableWidth: Int = width - paddingLeft - paddingRight
-        Log.i(TAG, "txtWidth:$mTxtWidth viewWidth:$availableWidth")
-        if (mTxtWidth <= 0 || mTxtWidth <= availableWidth) {
+        Log.i(TAG, "doStartScroll txtWidth:$mTxtWidth viewWidth:$availableWidth")
+        if (mTxtWidth <= 0 || mTxtWidth <= availableWidth || mRunning) {
+            mPreLoad = false
             return
         }
         mRunning = true
@@ -92,6 +97,7 @@ class MarqueeTextView @JvmOverloads constructor(
                     return
                 }
                 mScroller.startScroll(startX, 0, OFFSET, 0, DURATION.toInt())
+                invalidate()
                 startAnimation()
             }
         }, DURATION)
@@ -104,12 +110,14 @@ class MarqueeTextView @JvmOverloads constructor(
     }
 
     fun resetScroll(){
-        if(mScroller.currX != 0){
-            mScroller.startScroll(mScroller.currX,0, -mScroller.currX,0,0)
-        }
         if(scrollX != mOffsetXInView){
             scrollTo(mOffsetXInView,0)
         }
+        if(mScroller.currX != 0){
+            mScroller.startScroll(mScroller.currX,0, -mScroller.currX,0,0)
+            mScroller.abortAnimation()
+        }
+        invalidate()
     }
 
     override fun computeScroll() {
@@ -127,8 +135,9 @@ class MarqueeTextView @JvmOverloads constructor(
         }
         val res = super.onPreDraw()
         mOffsetXInView = scrollX
+        Log.i(TAG, "onPreDraw scrollX: $scrollX")
+        resetScroll()
         if(running){
-            resetScroll()
             startScroll()
         }
         return res;
@@ -148,14 +157,14 @@ class MarqueeTextView @JvmOverloads constructor(
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable) {
-                Log.i("test","$s")
+                Log.i(TAG,"afterTextChange $s")
                 if (mRunning) {
                     stopScroll()
                 }
                 if(gravity != mGravity){
                     gravity = mGravity
+                    resetScroll()
                 }
-                resetScroll()
                 mTxt = s.toString()
                 if (mAttached) {
                     startScroll()
